@@ -70,7 +70,9 @@
                     <div class="col-lg-6 col-md-12 site-title">
                         <h3 class="title-text">Hey</h3>
                         <h1 class="title-text text-uppercase">I'm Manish</h1>
-                        <h4 class="title-text text-uppercase">I'm a Data Science Enthusiast</h4>
+                        <h4 class="title-text text-uppercase">I'm
+                            <span class="typing"></span>
+                        </h4>
                         <div class="site-buttons">
                             <div class="d-flex flex-row flex-wrap">
                                 <button type="button" class="btn button primary-button mr-4 text-uppercase">Hire Me</button>
@@ -84,7 +86,6 @@
                 </div>
             </div>
         </section>
-
         
 
         <!--  ======================= End Banner Area ================================ -->
@@ -125,14 +126,25 @@
         </section>
 
         <!--  ========================= End About Area ==========================  -->
-    
-    
+        
     <!--  ======================= End Main Area ============================== -->
 
     <!-- JQuery-->
     <script src="./js/jquery.3.4.1.js"></script>
 
-
+    <!--Typed.min.js-->
+    <script type="text/javascript" src="./js/typed.min.js"></script>
+    <script type="text/javascript">
+    var typed = new Typed('.typing',{
+            strings:['a Data Science Enthusiast','a Coffee Addict','\a Software Developer',],
+            typeSpeed: 100,
+            backDelay: 2000,
+            startDelay: 500,
+            loop: true,
+            smartBackspace: true,
+            showCursor: false
+            });
+    </script>
 
     <!-- Bootstrap js file -->
     <Script src="./js/bootstrap.min.js"></Script>
