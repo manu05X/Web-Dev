@@ -1,0 +1,126 @@
+h1 {
+  color:blue;
+  text-align: center;
+  font-family: verdana;
+  font-size: 300%;
+}
+
+.showTable {
+  background-color: lightsalmon;
+  border: 5px;
+  margin: 50px auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.noDataFound {
+  text-align: center;
+  margin-top: 20px;
+  margin: 10px;
+  font-size: 30px;
+  padding: 10px;
+  background-color: red;
+}
+
+table,
+td,
+th {
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.Form {
+  margin: 10px;
+  border: 2px solid black;
+  padding: 10px;
+  background-color: rgb(114, 223, 231);
+  box-shadow: 10px 10px 5px;
+  border-radius: 5px;
+}
+
+/* starting button css */
+button {
+  font-size: 16px;
+  border-radius: 20px;
+  border-color:wheat ;
+  color: red;
+  padding: 14px 28px;;
+  margin: 4px 0;
+  border: 2px solid black;
+  cursor: pointer;
+  width: 150px;
+  }
+  button:hover {
+    font-size: 16px;
+    border-radius: 20px;
+    background:rgb(255, 0, 0) ;
+    color: aqua;
+    padding: 14px 28px;;
+    margin: 4px 0;
+    border: 2px solid black;
+    cursor: pointer;
+    width: 150px;
+    }
+
+.operationBtn {
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+
+.oBtn {
+  padding: 10px;
+  margin: 10px;
+}
+
+.aButton {
+  border-color: rgb(62, 236, 9);
+  color: black;
+}
+.aButton:hover {
+  background: rgb(10, 255, 10);
+  color: white;
+}
+
+.uButton {
+  border-color:orange;
+  color: black;
+}
+.uButton:hover {
+  background: rgb(253, 143, 53);
+  color: white;
+}
+
+
+.sButton {
+  border-color: rgb(255, 251, 4);
+  color: black;
+}
+.sButton:hover {
+  background: rgb(255, 251, 4);
+  color: red;
+}
+
+.dButton {
+  border-color: red;
+  color:black;
+}
+.dButton:hover {
+  background: red;
+  color: white;
+}
+/* ending button css */
+
+/* button {
+  font-size: 16px;
+  border-radius: 20px;
+  background-color:wheat ;
+  padding: 14px 28px;;
+  margin: 4px 0;
+  border: 2px solid black;
+  cursor: pointer;
+  width: 150px;
+  } */

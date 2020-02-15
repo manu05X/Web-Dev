@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<HEAD>
+	<TITLE>INDEX DB</TITLE>
+	<LINK rel="stylesheet" type="text/css" href="index.css">
+</HEAD>
+
+<BODY bgcolor="gold" onload = "createDB()">
+	<h1><b>STUDENT DATABASE</b></h1>
+	
+	<!-- starting page view of all btns-->
+	<DIV class="operationBtn">
+		<BUTTON class="oBtn aButton" id="add_button" type="button" name="add_btn" onclick=showAddForm()>ADD</BUTTON>
+		<BUTTON class="oBtn uButton" id="upd_button" type="button" name="upd_btn" onclick=showUpdateForm()>UPDATE</BUTTON>
+		<BUTTON class="oBtn sButton" id="show_button" type="button" name="show_btn" onclick=showShowForm()>SHOW</BUTTON>
+		<BUTTON class="oBtn dButton" id="del_button" type="button" name="del_btn" onclick=showDeleteForm()>DELETE</BUTTON>
+	</DIV>
+	<!-- -------------------- -->
+
+	<!--Action displayed on click of Add btn-->
+	<DIV class="addFormDiv Form" id="add_form_div">
+		<FORM id="add_form">
+			<h2>Add Student : </h2>
+			<br>
+			Roll : <input type="text" name="roll" id="add_roll">
+			<br><br>
+			Name : <input type="text" name="name" id="add_name">
+			<br><br>
+			Year : <input type="text" name="year" id="add_year">
+			<br><br>
+			Semester : <input type="text" name="semester" id="add_semester">
+			<br><br>
+			Department : <input type="text" name="department" id="add_department">
+			<br><br>
+			<button type="submit" id="add_student" name="add_button" onclick=addStudentInDatabase()>Submit</button>
+		</FORM>
+	</DIV>
+	
+	<!--Action displayed on click of Update btn-->
+	<DIV class="updateFormDiv Form" id="update_form_div">
+		<FORM id="update_form">
+			Previous Roll : <input type="text" name="previous_roll" id="update_prev_roll">
+			<br>
+			<h2>Update info : </h2>
+			Name : <input type="text" name="name" id="update_name">
+			<br><br>
+			Year : <input type="text" name="year" id="update_year">
+			<br><br>
+			Semester : <input type="text" name="semester" id="update_semester">
+			<br><br>
+			Department : <input type="text" name="department" id="update_department">
+			<br><br>
+			<button type="submit" id="update_student" name="update_button" onclick=updateStudentFromDatabase()>Submit</button>
+		</FORM>
+	</DIV>
+
+		<!--Action displayed on click of show btn-->
+	<DIV class="showFormDiv Form" id="show_form_div">
+		<FORM id="show_form">
+			<h2>Show Student : </h2>
+
+			Roll : <input type="text" name="roll" id="show_student_info">
+			<br><br>
+			<button type="submit" id="show_student" name="show_button" onclick=showStudentFromDatabase()>Submit</button>
+		</FORM>
+	</DIV>
+
+	<!--Action displayed on click of delete btn-->
+	<DIV class="deleteFormDiv Form" id="delete_form_div">
+		<FORM id="delete_form">
+			<h2>Delete Student : </h2>
+			Roll : <input type="text" name="roll" id="delete_student_info">
+			<br><br>
+			<button type="submit" id="delete_student" name="delete_button" onclick=deleteStudentFromDatabase()>Submit</button>
+		</FORM>
+	</DIV>
+	
+	<DIV id="tableShow">
+		<!--<TABLE id="showTable">
+		
+		</TABLE>-->
+	</DIV>
+
+	<SCRIPT src="index.js"></SCRIPT>
+	
+
+</BODY>
+
+</HTML>

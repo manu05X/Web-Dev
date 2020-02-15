@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fees Payment</title>
+		<link rel="stylesheet" href="./fees.css" />
+	</head>
+	<body bgcolor="#b3ffff">
+	<div class="outer">
+		<section class="fees-payment">
+			<form onchange="checkForm(event)" class="wrapper bordered">
+				<div class="wrapper">
+					<select name="year" id="yearInput">
+						<option value="none" disabled selected hidden>Select your year</option>
+						<option value="1st Year">1st Year</option>
+						<option value="2nd Year">2nd Year</option>
+						<option value="3rd Year">3rd Year</option>
+						<option value="4th Year">4th Year</option>
+					</select>
+					<select name="semester" id="semInput">
+						<option value="none" disabled selected hidden>Select your semester</option>
+						<option value="1st Semester">1st Semester</option>
+						<option value="2nd Semester">2nd Semester</option>
+					</select>
+				</div>
+				<div class="wrapper">
+					<input type="radio" id="pay-now" name="payment" value="Pay Fees Now"> Pay Fees Now<br>
+					<input type="radio" id="pay-later" name="payment" value="Pay Fees Later"> Pay Fees Later<br>
+				</div>
+				<div class="wrapper">
+					<h5 class="d-none" id="fees-display">Fees amount: &#8377;30000</h5>
+					<button type="submit" id="submit-btn" class="submit-btn d-none">Submit</button>
+					<span id="submit-notice" class="d-none">Last date for submission is 31/1/2020</span>
+				</div>
+			</form>
+		</section>
+		<script>
+			function checkForm(event) {
+			const yearSelect = document.getElementById('yearInput');
+			const semSelect = document.getElementById('semInput');
+
+			const payNow = document.getElementById('pay-now');
+			const payLater = document.getElementById('pay-later');
+
+			if(yearSelect.value !== 'none' && semSelect.value !== 'none') {
+			document.getElementById('fees-display').classList.remove('d-none');
+
+			if (payNow.checked) {
+			document.getElementById('submit-btn').classList.remove('d-none');
+			document.getElementById('submit-notice').classList.add('d-none');
+			} else if (payLater.checked) {
+			document.getElementById('submit-btn').classList.add('d-none');
+			document.getElementById('submit-notice').classList.remove('d-none');
+					}
+				}
+			}
+		</script>
+		</div>
+	</body>
+</html>

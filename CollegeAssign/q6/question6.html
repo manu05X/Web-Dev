@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv = "Content-Type" content="text/html" charset="utf-8" />
+	<style>
+		.main-layout {
+			padding: 2rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+	
+		.main-actions {
+			width: 70%;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		
+		.btn {
+			cursor: pointer;
+			color: #fafafa;
+			border: 1px solid transparent;
+			border-radius: 5px;
+			padding: 16px 32px;
+			background-color: navy;
+			transition: background-color .3s ease-out;
+		}
+		
+		.btn:hover {
+			background-color: blue;
+		}
+	</style>
+     
+   </head>
+   <body>
+		<section class="main-layout">
+			<div class="main-actions">
+				<button onclick="add()" class="btn">Add data </button><br>
+				<button onclick="show()" class="btn">Show data</button><br>
+				<button onclick="update()" class="btn">Update data</button><br>
+				<button onclick="remove()" class="btn">Delete</button>
+			</div>
+			<div id="data-display">
+			</div>
+		</section>
+   </body>
+   <script type="text/javascript">         
+        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+        window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+        if (!window.indexedDB) {
+           window.alert("Your browser doesn't support a stable version of IndexedDB.")
+        }
+        let db, objectStore;
+        const request = window.indexedDB.open("students", 1);
+         
+        request.onerror = function(event) {
+           alert("error: ");
+        };
+         
+        request.onsuccess = function(event) {
+           db = request.result;
+        };
+         
+        request.onupgradeneeded = function(event) {
+           db = event.target.result;
+           objectStore = db.createObjectStore("students", {keyPath: "roll"});
+		 }
+         
+		 function show() {
+            objectStore = db.transaction("students").objectStore("students");
+            const displayDiv = document.getElementById("data-display");
+			displayDiv.innerHTML = "";
+            objectStore.openCursor().onsuccess = function(event) {
+               const cursor = event.target.result;
+			   if(cursor) {
+					const entry = document.createElement('h5');
+					entry.innerHTML = "Name: " + cursor.value.name + ", Roll: " + cursor.key +" , Year: " + cursor.value.year + ", Semester: "+ cursor.value.semester + ", Mob: " + cursor.value.mob;
+					displayDiv.appendChild(entry);
+					cursor.continue();
+			   }
+			};
+		 }
+         
+         function add() {
+			const roll = prompt("Enter the roll number:");
+			const name = prompt("Enter the name:");
+			const year = prompt("Enter the year:");
+			const sem = prompt("Enter the semester:");
+			const mob = prompt("Enter the mobile number:");
+			if (roll != null && name != null && year != null && sem != null && mob != null){
+				const request = db.transaction(["students"], "readwrite")
+									.objectStore("students")
+									.add({ roll: roll, name: name, year: year, semester: sem, mob: mob});
+           
+				request.onsuccess = function(event) {
+					alert(name +" has been added to your database.");
+				};
+           
+				request.onerror = function(event) {
+					alert("Unable to add data\r\n"+ m +" is aready exist in your database! ");
+				}
+			}
+		}
+
+		function update(){
+			let count = 0;
+			const roll = prompt("Enter the updated roll number:");
+			const name = prompt("Enter the updated name:");
+			const year = prompt("Enter the updated year:");
+			const sem = prompt("Enter the updated semester:");
+			const mob = prompt("Enter the updated mobile number:");
+			objectStore = db.transaction("students").objectStore("students");
+            objectStore.openCursor().onsuccess = function(event) {
+				let cursor = event.target.result;
+				if(cursor){
+					if (cursor.key == roll) {
+						const request = db.transaction(["students"], "readwrite")
+										.objectStore("students")
+										.put({roll: roll, name: name, year: year, semester: sem, mob: mob});
+							request.onsuccess = function(event){
+								alert("updated successfully!");
+							}
+							request.onerror=function(event){
+								alert("updation unsuccessfull!");
+							}
+					}
+					cursor.continue();
+				}
+			}
+		 }
+         
+         function remove() {
+			roll = prompt("Enter the roll number: ");
+            var request = db.transaction(["students"], "readwrite").objectStore("students").delete(roll);
+            request.onsuccess = function(event) {
+               alert(roll +" roll number entry has been removed from your database.");
+            };
+			request.onerror= function(event){
+				alert("Roll number to be deleted not in database!");
+			}
+         }
+      </script>
+</html>
